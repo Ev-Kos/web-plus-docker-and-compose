@@ -6,7 +6,7 @@ services:
     container_name: kpd-backend
     build: ./backend
     env_file:
-      - ./.env
+      - ./backend/.env
     ports:
       - "4000:3007"      
     restart: always
@@ -19,7 +19,7 @@ services:
     container_name: kpd-frontend
     build: ./frontend
     env_file:
-      - ./.env
+      - ./backend/.env
     ports:
       - "8081:80"
     restart: always
@@ -32,7 +32,7 @@ services:
     container_name: kpd-database
     image: postgres:12.15-alpine
     env_file:
-      - ./.env
+      - ./backend/.env
     restart: always
     volumes:
       - postgres_data:/data/postgres
