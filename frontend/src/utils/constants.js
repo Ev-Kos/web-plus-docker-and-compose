@@ -1,4 +1,4 @@
-export const URL = "http://localhost:3007";
+export const URL = "https://api.kpd-frontend.nomoredomains.work";
 
 export const MINIMUM_PASSWORD_LENGTH = 3;
 export const MINIMUM_USERNAME_LENGTH = 3;
