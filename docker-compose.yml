@@ -30,7 +30,7 @@ services:
   
   database:
     container_name: kpd-database
-    image: postgres:13
+    image: postgres:12.15-alpine
     env_file:
       - ./backend/.env
     restart: always
