@@ -11,7 +11,7 @@ FROM node:16-alpine AS kpd-backend
 WORKDIR /app
 COPY --from=builder /app/package*.json ./
 COPY --from=builder /app/ecosystem.config.js ./
-RUN npm ci --omit=dev --audit=false && npm i -g pm2
+RUN npm ci --omit=dev && npm i -g pm2
 COPY --from=builder /app/dist ./dist
-EXPOSE 4000
+EXPOSE 3000
 CMD ["pm2-runtime", "start", "ecosystem.config.js"]

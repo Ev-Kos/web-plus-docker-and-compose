@@ -4,11 +4,13 @@ services:
 
   backend:
     container_name: kpd-backend
-    build: ./backend
+    build:
+      context: backend
+      dockerfile: Dockerfile
     env_file:
       - ./backend/.env
     ports:
-      - "4000:4000"      
+      - "4000:3000"      
     restart: always
     depends_on:
       - postgres
@@ -35,12 +37,12 @@ services:
       - ./backend/.env
     restart: always
     volumes:
-      - postgres_data:/var/lib/postgresql/data/pgdata
+      - pg_data:/var/lib/postgresql/data/pgdata
     networks:
       - backend-net
 
 volumes:
-  postgres_data:
+  pg_data:
 
 networks:
   frontend-net:
