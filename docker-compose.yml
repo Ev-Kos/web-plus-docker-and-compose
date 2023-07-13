@@ -28,8 +28,8 @@ services:
     networks:
       - frontend-net
   
-  database:
-    container_name: database
+  kupipodariday:
+    container_name: kupipodariday
     image: postgres:12.15-alpine
     env_file:
       - ./backend/.env
