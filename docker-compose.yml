@@ -8,24 +8,37 @@ services:
       context: backend
       dockerfile: Dockerfile
     env_file: ./backend/.env
-    restart: on-failure
+    restart: always
     ports:
-      - '4000:3000'
+      - '4000:4000'
     depends_on:
       - postgres
+    networks:
+      - backend-net
    
   postgres:
-    container_name: 'kupipodariday'
-    image: postgres:12.12-alpine    
-    restart: on-failure
+    container_name: 'postgres'
+    image: postgres:12.15-alpine    
+    restart: always
     env_file: ./backend/.env
+    volumes:
+      - pg_data:/var/lib/postgresql/data/pgdata
+    networks:
+      - backend-net
       
   frontend:
     container_name: 'kpd-frontend'
     build:
       context: frontend
       dockerfile: Dockerfile
+    restart: always
     ports:
       - '8081:80'
     depends_on:
       - backend
+
+volumes:
+  pg_data:
+
+networks:
+  backend-net:
