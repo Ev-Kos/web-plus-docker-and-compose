@@ -29,7 +29,7 @@ services:
       - frontend-net
   
   database:
-    container_name: kpd-database
+    container_name: database
     image: postgres:12.15-alpine
     env_file:
       - ./backend/.env
